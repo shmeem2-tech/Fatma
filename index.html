@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <title>منصة الإنتاج العلمي الشرعي – مشروع فاطمة</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- خط جميل عربي من جوجل -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet" />
+    <style>
+        :root {
+            --navy: #0a143c;
+            --navy-soft: #151f4f;
+            --gold: #d4b06a;
+            --gold-soft: #f5e4c2;
+            --bg: #f4f5f9;
+            --text: #1a1a1a;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Tajawal", system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        /* رأس الصفحة */
+        header {
+            background: linear-gradient(135deg, var(--navy) 0%, #020617 100%);
+            color: #fff;
+            padding: 1.2rem 6vw;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+
+        .brand-logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--gold);
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .brand-text span:first-child {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .brand-text span:last-child {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        nav a {
+            margin-left: 1.5rem;
+            color: #e5e7eb;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        /* هيرو */
+        .hero {
+            background: radial-gradient(circle at top right, rgba(212,176,106,0.2), transparent 55%),
+                        radial-gradient(circle at bottom left, rgba(15,23,42,0.7), #020617);
+            color: #fff;
+            padding: 3.5rem 6vw 3rem;
+            display: grid;
+            grid-template-columns: minmax(0, 3fr) minmax(280px, 2fr);
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 2.2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.05rem;
+            max-width: 520px;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(15,23,42,0.7);
+            border-radius: 999px;
+            padding: 0.35rem 0.9rem;
+            font-size: 0.85rem;
+            color: var(--gold);
+            border: 1px solid rgba(212,176,106,0.4);
+            margin-bottom: 0.75rem;
+        }
+
+        .hero-badge-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--gold);
+        }
+
+        .hero-meta {
+            margin-top: 1.1rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .hero-meta span {
+            display: inline-block;
+            margin-left: 1.2rem;
+        }
+
+        .hero-card {
+            background: rgba(15,23,42,0.85);
+            border-radius: 1.2rem;
+            padding: 1.4rem 1.4rem 1.1rem;
+            border: 1px solid rgba(212,176,106,0.5);
+            box-shadow: 0 18px 45px rgba(15,23,42,0.6);
+        }
+
+        .hero-card-title {
+            font-size: 1.05rem;
+            margin-bottom: 0.7rem;
+            color: var(--gold);
+        }
+
+        .hero-kpis {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0,1fr));
+            gap: 0.9rem;
+            margin-top: 0.7rem;
+        }
+
+        .kpi {
+            background: rgba(15,23,42,0.9);
+            border-radius: 0.9rem;
+            padding: 0.75rem 0.9rem;
+            border: 1px solid rgba(148,163,184,0.6);
+        }
+
+        .kpi-label {
+            font-size: 0.78rem;
+            color: #cbd5f5;
+            margin-bottom: 0.2rem;
+        }
+
+        .kpi-value {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+
+        .kpi-note {
+            font-size: 0.7rem;
+            color: #9ca3af;
+        }
+
+        /* أقسام الصفحة */
+        main {
+            padding: 2.8rem 6vw 3rem;
+        }
+
+        .section {
+            margin-bottom: 2.8rem;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            margin-bottom: 0.3rem;
+            color: var(--navy);
+        }
+
+        .section-subtitle {
+            font-size: 0.9rem;
+            color: #6b7280;
+            margin-bottom: 1.6rem;
+        }
+
+        .cards-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+            gap: 1.4rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 1rem;
+            padding: 1.1rem 1.2rem;
+            box-shadow: 0 10px 25px rgba(15,23,42,0.08);
+            border: 1px solid #e5e7eb;
+        }
+
+        .card-title {
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+            color: var(--navy);
+        }
+
+        .card-body {
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: #374151;
+        }
+
+        /* تمثيل بسيط بياني */
+        .bar-wrapper {
+            margin-top: 0.8rem;
+        }
+
+        .bar-label-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #4b5563;
+            margin-bottom: 0.25rem;
+        }
+
+        .bar-bg {
+            width: 100%;
+            height: 10px;
+            border-radius: 999px;
+            background: #e5e7eb;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, var(--gold), #facc6b);
+        }
+
+        .bar-fill.sharjah {
+            width: 59%; /* تقريبًا 82 من 140 */
+        }
+
+        .bar-fill.dubai {
+            width: 41%; /* تقريبًا 58 من 140 */
+        }
+
+        /* شريط تخصصات */
+        .pill-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.6rem;
+        }
+
+        .pill {
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            border: 1px solid #d1d5db;
+            background: #f9fafb;
+        }
+
+        .pill.main {
+            border-color: var(--gold);
+            background: var(--gold-soft);
+            color: #7c5a22;
+        }
+
+        /* التذييل */
+        footer {
+            padding: 1.2rem 6vw 1.7rem;
+            border-top: 1px solid #e5e7eb;
+            font-size: 0.8rem;
+            color: #6b7280;
+            background: #f9fafb;
+        }
+
+        footer span {
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        @media (max-width: 800px) {
+            .hero {
+                grid-template-columns: minmax(0,1fr);
+                padding-top: 2.2rem;
+            }
+            .hero-card {
+                order: -1;
+            }
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.7rem;
+            }
+            nav {
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                overflow-x: auto;
+            }
+            nav a {
+                white-space: nowrap;
+                margin-left: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="brand">
+        <div class="brand-logo">شـرع</div>
+        <div class="brand-text">
+            <span>منصة الإنتاج العلمي الشرعي</span>
+            <span>نتائج مشروع تخرّج فاطمة خالد آل علي</span>
+        </div>
+    </div>
+    <nav>
+        <a href="#overview">نظرة عامة</a>
+        <a href="#comparison">مقارنة الجامعات</a>
+        <a href="#fields">التخصصات</a>
+        <a href="#method">منهجية المنصّة</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div>
+        <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            <span>منصة بيبليومترية مبنية على رسائل شرعية (2020–2025)</span>
+        </div>
+        <h1 class="hero-title">خريطة رقمية للإنتاج العلمي في الشريعة الإسلامية</h1>
+        <p class="hero-subtitle">
+            هذه المنصّة تعرض بصورة موجزة نتائج مشروع التخرّج لفاطمة خالد آل علي حول
+            النتاج الشرعي بين جامعتي الشارقة ودبي، من خلال مؤشرات ببليوغرافية وببليومترية
+            تُسهِّل فهم حجم واتجاهات البحث في الدراسات الشرعية.
+        </p>
+        <div class="hero-meta">
+            <span>الفترة الزمنية: 2020 – 2025</span>
+            <span>نوع الوثائق: رسائل ماجستير ودكتوراه</span>
+            <span>المجال: الدراسات الشرعية</span>
+        </div>
+    </div>
+
+    <div class="hero-card">
+        <div class="hero-card-title">ملخّص سريع للمؤشرات</div>
+        <div class="hero-kpis">
+            <div class="kpi">
+                <div class="kpi-label">إجمالي الرسائل</div>
+                <div class="kpi-value">140</div>
+                <div class="kpi-note">رسالة أكاديمية في الشريعة</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-label">جامعة الشارقة</div>
+                <div class="kpi-value">82</div>
+                <div class="kpi-note">رسالة ماجستير ودكتوراه</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-label">جامعة دبي / الوصل</div>
+                <div class="kpi-value">58</div>
+                <div class="kpi-note">ضمن مجال الدراسات الشرعية</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-label">اللغة</div>
+                <div class="kpi-value">100%</div>
+                <div class="kpi-note">جميع الرسائل باللغة العربية</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<main>
+    <!-- نظرة عامة -->
+    <section class="section" id="overview">
+        <h2 class="section-title">نظرة عامة على المنصّة</h2>
+        <p class="section-subtitle">
+            تعتمد هذه المنصّة على قائمة ببليوغرافية شاملة تضم 140 رسالة في الشريعة الإسلامية
+            من جامعتي الشارقة ودبي خلال الفترة 2020–2025، وتحولها إلى مؤشرات رقمية مختصرة.
+        </p>
+
+        <div class="cards-row">
+            <div class="card">
+                <h3 class="card-title">ما الذي تعرضه المنصّة؟</h3>
+                <p class="card-body">
+                    • حجم الإنتاج العلمي في الدراسات الشرعية.<br />
+                    • توزيع الرسائل بين جامعتين: الشارقة ودبي / الوصل.<br />
+                    • المجالات الرئيسة: الفقه، أصول الفقه، الحديث، التفسير.<br />
+                    • لمحة عن تطور البحث الشرعي في الفترة المدروسة.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">كيف يمكن استخدامها في المناقشة؟</h3>
+                <p class="card-body">
+                    تُستخدم المنصّة كواجهة بصرية تساند عرض المشروع، فتُظهر الأرقام الأساسية
+                    للّجنة والجمهور في ثوانٍ، وتُبرز قيمة مشروع فاطمة بوصفه أداة تحليل لا مجرد
+                    دراسة مكتوبة.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- مقارنة الجامعات -->
+    <section class="section" id="comparison">
+        <h2 class="section-title">مقارنة إنتاج الجامعتين</h2>
+        <p class="section-subtitle">
+            يوضّح هذا الجزء التوازن بين إنتاج جامعتَي الشارقة ودبي في مجال الدراسات الشرعية.
+        </p>
+
+        <div class="cards-row">
+            <div class="card">
+                <h3 class="card-title">عدد الرسائل حسب الجامعة</h3>
+                <div class="card-body">
+                    <div class="bar-wrapper">
+                        <div class="bar-label-row">
+                            <span>جامعة الشارقة</span>
+                            <span>82 من 140</span>
+                        </div>
+                        <div class="bar-bg">
+                            <div class="bar-fill sharjah"></div>
+                        </div>
+                    </div>
+
+                    <div class="bar-wrapper" style="margin-top: 0.7rem;">
+                        <div class="bar-label-row">
+                            <span>جامعة دبي / الوصل</span>
+                            <span>58 من 140</span>
+                        </div>
+                        <div class="bar-bg">
+                            <div class="bar-fill dubai"></div>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 0.8rem; font-size: 0.85rem; color:#4b5563;">
+                        يظهر تفوّق بسيط لجامعة الشارقة في عدد الرسائل، مع مساهمة واضحة
+                        لجامعة دبي / الوصل في دعم البحث الشرعي المتخصص.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">تفسير المؤشر الببليومتري</h3>
+                <p class="card-body">
+                    هذه المقارنة لا تقتصر على الأرقام فقط، بل تعكس:
+                    <br /><br />
+                    • كثافة النشاط البحثي في كل جامعة.<br />
+                    • الفرص المستقبلية للتعاون بين المؤسستين الشرعيتين.<br />
+                    • أهمية إنشاء قواعد بيانات موحّدة لرسائل الشريعة في دولة الإمارات.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- التخصصات -->
+    <section class="section" id="fields">
+        <h2 class="section-title">مجالات الرسائل الشرعية</h2>
+        <p class="section-subtitle">
+            تتركّز الرسائل المدروسة في أربعة حقول رئيسة، مع تنوّع في الموضوعات والتطبيقات الفقهية المعاصرة.
+        </p>
+
+        <div class="cards-row">
+            <div class="card">
+                <h3 class="card-title">التخصصات الرئيسة</h3>
+                <p class="card-body">
+                    توزعت الرسائل على المحاور الآتية:
+                </p>
+                <div class="pill-row">
+                    <span class="pill main">فقه</span>
+                    <span class="pill main">أصول الفقه</span>
+                    <span class="pill main">الحديث</span>
+                    <span class="pill main">التفسير</span>
+                    <span class="pill">قضايا معاصرة</span>
+                    <span class="pill">فقه المقاصد</span>
+                    <span class="pill">الأنظمة والقوانين</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">دلالة هذا التوزيع</h3>
+                <p class="card-body">
+                    • يُظهر التوزيع تركيزًا على الفقه وتطبيقاته المعاصرة.<br />
+                    • استمرار حضور علوم الحديث والتفسير في الدراسات العليا.<br />
+                    • تنامي الاهتمام بالربط بين الفقه والقوانين الوضعية في دولة الإمارات.<br />
+                    • إمكانية تطوير دراسات مشتركة تُعالج قضايا شرعية جديدة في الواقع المعاصر.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- منهجية المنصة -->
+    <section class="section" id="method">
+        <h2 class="section-title">منهجية بناء المنصّة الببليومترية</h2>
+        <p class="section-subtitle">
+            تستند المنصّة إلى خطوات منهجية واضحة، تُحوِّل القائمة الببليوغرافية إلى مؤشرات رقمية يمكن قراءتها بصريًا.
+        </p>
+
+        <div class="cards-row">
+            <div class="card">
+                <h3 class="card-title">خطوات العمل</h3>
+                <p class="card-body">
+                    1. حصر رسائل الماجستير والدكتوراه في الشريعة الإسلامية بين جامعتَي الشارقة ودبي.<br />
+                    2. إعداد قائمة ببليوغرافية منظَّمة تضم بيانات كل رسالة.<br />
+                    3. استخراج المؤشرات الببليومترية: عدد الرسائل، توزيعها الزمني، الجامعة، المجال.<br />
+                    4. تحويل هذه المؤشرات إلى لوحة رقمية مبسّطة (منصّة) لعرض النتائج.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">كيف تُطوَّر لاحقًا؟</h3>
+                <p class="card-body">
+                    • ربط المنصّة بقاعدة بيانات فعلية للرسائل الشرعية في جامعات أخرى.<br />
+                    • إضافة بحث متقدّم يسمح بالوصول إلى كل رسالة حسب المؤلف والموضوع والكلمات المفتاحية.<br />
+                    • إدماج مخططات تفاعلية (Interactive Charts) لتسهيل التحليل المتقدم.<br />
+                    • تحويل المنصّة إلى بوابة وطنية للإنتاج العلمي في الشريعة الإسلامية.
+                </p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div>
+        هذه المنصّة جزء من مشروع تخرّج الطالبة
+        <span>فاطمة خالد آل علي</span>
+        في قسم علوم المكتبات والمعلومات – جامعة الوصل، وتعكس توظيف الببليوغرافيا
+        والببليومتريا في خدمة الدراسات الشرعية.
+    </div>
+</footer>
+
+</body>
+</html>
